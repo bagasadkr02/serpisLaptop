@@ -1,0 +1,19 @@
+<?php
+
+session_start();
+if ($_SESSION['status'] != "status") {
+    header("location:../login/login.php");
+}
+
+// koneksi database
+include '../../conn.php';
+
+// menginput data ke database
+$name = $_POST['nama_laptop'];
+$kerusakan = $_POST['kerusakan'];
+$pemilik = $_POST['pemilik'];
+
+
+$set = mysqli_query($mysqli, "INSERT INTO laptop VALUES('', '$name', '$kerusakan','$pemilik')");
+// mengalihkan halaman kembali ke index.php
+header("location:index.php");
