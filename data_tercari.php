@@ -8,6 +8,10 @@ if (isset($_POST['keyword'])) {
     $data = cariResi($_POST['keyword']);
 }
 
+if ($_POST['keyword'] === null) {
+    header("location: index.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,20 +40,20 @@ if (isset($_POST['keyword'])) {
         </div>
     </nav>
     <?php if (isset($_SESSION['keyword'])) : ?>
-    <?php if ($_SESSION['keyword']['type'] === true) : ?>
-        <div class="alert alert-success border-2 d-flex align-items-center" role="alert">
-            <div class="bg-success me-3 icon-item"><span class="fas fa-check-circle text-white fs-3"></span></div>
-            <p class="mb-0 flex-1"><?= $_SESSION['keyword']['message'] ?></p>
-            <a href="index.php"><button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></a>
-        </div>
-    <?php elseif ($_SESSION['keyword']['type'] === false) : ?>
-        <div class="alert alert-danger border-2 d-flex align-items-center" role="alert">
-            <div class="bg-danger me-3 icon-item"><span class="fas fa-times-circle text-white fs-3"></span></div>
-            <p class="mb-0 flex-1"><?= $_SESSION['keyword']['message'] ?></p>
-            <a href="index.php"><button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></a>
-        </div>
-    <?php endif; ?>
-    <?php unset($_SESSION['keyword']); ?>
+        <?php if ($_SESSION['keyword']['type'] === true) : ?>
+            <div class="alert alert-success border-2 d-flex align-items-center" role="alert">
+                <div class="bg-success me-3 icon-item"><span class="fas fa-check-circle text-white fs-3"></span></div>
+                <p class="mb-0 flex-1"><?= $_SESSION['keyword']['message'] ?></p>
+                <a href="index.php"><button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></a>
+            </div>
+        <?php elseif ($_SESSION['keyword']['type'] === false) : ?>
+            <div class="alert alert-danger border-2 d-flex align-items-center" role="alert">
+                <div class="bg-danger me-3 icon-item"><span class="fas fa-times-circle text-white fs-3"></span></div>
+                <p class="mb-0 flex-1"><?= $_SESSION['keyword']['message'] ?></p>
+                <a href="index.php"><button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></a>
+            </div>
+        <?php endif; ?>
+        <?php unset($_SESSION['keyword']); ?>
     <?php endif; ?>
     <section class="data-laptop">
         <div class="container">
