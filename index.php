@@ -1,3 +1,6 @@
+<?php
+include 'conn.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,20 +36,20 @@
                         <!-- Page heading-->
                         <h1 class="mb-5">Web untuk memantau perkembangan service latop anda!</h1>
 
-                        <form class="form-subscribe" id="contactForm">
-                            <!-- resi input-->
-                            <form action="search_data.php" method="GET">
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="form-control form-control-lg" id="searchResi" name="searchResi" type="text" value="" placeholder="Masukan nomor resis" data-sb-validations="required" />
-                                    </div>
-                                    <div class="col-auto">
-                                        <button class="btn btn-primary btn-lg" type="submit">Cari</button>
-                                    </div>
+                        <!-- <form class="form-subscribe" id="contactForm"> -->
+                        <!-- resi input-->
+                        <form action="data_tercari.php" method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control form-control-lg" id="keyword" name="keyword" type="text" value="" placeholder="Masukan nomor resi" data-sb-validations="required" />
                                 </div>
-                            </form>
-
+                                <div class="col-auto">
+                                    <button class="btn btn-primary btn-lg" type="submit">Cari</button>
+                                </div>
+                            </div>
                         </form>
+
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>

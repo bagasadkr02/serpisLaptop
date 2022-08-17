@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+include 'conn.php';
+
+
+require 'function.php';
+$keyword = $_POST['keyword'];
+
+//    if($keyword == ""){
+//         echo "<script>alert('Resi Tidak di temukan');</script>";
+//         echo "<script>location='index.php';</script>";
+//    }
+
+if (isset($_POST['keyword'])) {
+    $data = cariResi($_POST['keyword']);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,45 +39,31 @@
 
 <body class="bg-primary">
 
+
     <nav class="navbar navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">Laptop D Computer</a>
-            @auth
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Admin
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <form action="/logout" method="post">
-                        @csrf
-                        <button type="submit" class="dropdown-item">Logout</button>
-                    </form>
-                    <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
-                </ul>
-            </div>
-            @else
-            <a class="btn btn-primary" href="/register">Login admin</a>
-            @endauth
+            <a class="navbar-brand" href="index.php">Laptop D Computer</a>
         </div>
     </nav>
     <section class="data-laptop">
-        @foreach ($laptops as $laptops)
         <div class="container">
             <div class="row justify-content-center">
-                <div class="card text-bg-light mt-5 mb-5" style="width: 35rem;">
-                    <div class="card-header">No Resi: {{ $laptops->resi}}</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Jenis Laptop: {{ $laptops->nama_laptop }}</h5>
-                        <p class="pemilik">Pemilik Laptop: {{ $laptops->pemilik_laptop }}</p>
-                        <p class="kerusakan">Kerusakan: {{ $laptops->kerusakan }}</p>
-                        <p class="estimasi">Estimasi Pengerjaan: {{ $laptops->estimasi }} Hari</p>
+                <?php foreach ($data as $row) : ?>
+                    <div class="card text-bg-light mt-5 mb-5" style="width: 35rem;">
+                        <div class="card-header">Nomor Resi: <?= $row["resi"]; ?></div>
+                        <div class="card-body">
+                            <h5>Nama Laptop: <?= $row["nama_laptop"]; ?></h5>
+                            <p>Kerusakan: <?= $row["kerusakan"]; ?></p>
+                            <p>Pemilik: <?= $row["pemilik"]; ?></p>
+                            <p>Status: <?= $row["status"] == 'B' ? 'Belum selesai perbaikan' : 'Selesai perbaikan'; ?></p>
+                            <p>Teknisi: <?= $row["nama"]; ?></p>
+                        </div>
+                        <a href="index.php" class="btn btn-primary mb-3">BACK TO SEARCH</a>
                     </div>
-                    <a href="/" class="btn btn-primary mb-3">BACK TO SEARCH</a>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
         </div>
-        @endforeach
     </section>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
     </script>
