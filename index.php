@@ -25,7 +25,7 @@ include 'conn.php'
     <!-- Navigation-->
     <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Laptop D Computer</a>
+            <a class="navbar-brand" href="index.php">Laptop D komputer</a>
             <a class="btn btn-primary" href="login/index.php">Login admin</a>
         </div>
     </nav>
@@ -43,8 +43,13 @@ include 'conn.php'
                         <form action="data_tercari.php" method="post">
                             <div class="row">
                                 <div class="col">
+
                                     <input class="form-control form-control-lg" id="keyword" name="keyword" type="text"
                                         value="" placeholder="Masukan nomor resi" data-sb-validations="required" />
+
+                                    <input class="form-control form-control-lg" id="keyword" name="keyword" type="text"
+                                        value="" placeholder="Masukan nomor resi" data-sb-validations="required" />
+
                                 </div>
                                 <div class="col-auto">
                                     <button class="btn btn-primary btn-lg" type="submit">Cari</button>

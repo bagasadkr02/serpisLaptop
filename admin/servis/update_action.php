@@ -2,8 +2,8 @@
 include '../../conn.php';
 
 session_start();
-if ($_SESSION['status'] != "status") {
-    header("location:../login/login.php");
+if ($_SESSION['status'] != "login") {
+    header("location: ../../login/index.php");
 }
 
 

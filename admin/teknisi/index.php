@@ -2,7 +2,7 @@
 <?php
 session_start();
 if ($_SESSION['status'] != "login") {
-    header("location:../index.php?pesan=belum_login");
+    header("location: ../../login/index.php");
 }
 ?>
 
@@ -177,7 +177,7 @@ if ($_SESSION['status'] != "login") {
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= $d['nama']; ?></td>
-                                    <td><?= $d['telp']; ?></td>
+                                    <td><?= "0" . $d['telp']; ?></td>
                                     <td>
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit<?php echo $d['id_teknisi']; ?>">EDIT</a>
 
