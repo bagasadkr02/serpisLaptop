@@ -3,7 +3,6 @@ include 'conn.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -18,7 +17,6 @@ include 'conn.php'
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="assets/css/styles.css" rel="stylesheet" />
 </head>
-
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-light bg-light sticky-top">
@@ -175,5 +173,4 @@ include 'conn.php'
 
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
-
 </html>

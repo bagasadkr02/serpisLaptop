@@ -1,5 +1,5 @@
 <?php
-$databaseHost = 'localhost:3307'; //port bagas
+$databaseHost = 'localhost'; //port bagas
 // $databaseHost = 'localhost';
 $databaseName = 'servislaptop';
 $databaseUsername = 'root';
