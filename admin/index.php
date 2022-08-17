@@ -2,13 +2,18 @@
 <html lang="en">
 <?php
 session_start();
+
+require '../conn.php';
+require '../function.php';
+
 if ($_SESSION['status'] != "login") {
     header("location: ../../login/index.php");
 }
 
 if (isset($_POST['backup'])) {
-    $data = backup_db($_POST['backup']);
+    backup_db();
 }
+
 
 ?>
 
@@ -31,17 +36,6 @@ if (isset($_POST['backup'])) {
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <form action="logout.php" method="post">
-
-                    <button type="submit" class="nav-link px-3 bg-dark border-0">
-                        Sign out
-                    </button>
-                </form>
-
-            </div>
-        </div>
     </header>
 
     <div class="container-fluid">
@@ -73,22 +67,28 @@ if (isset($_POST['backup'])) {
                                 logout
                             </a>
                         </li>
+                        <hr>
                         <li class="nav-item">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Backup & Restore Database
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><button name="backup" class="dropdown-item">Backup</button></li>
-                                    <li><button name="restore" class="dropdown-item">Restore</button></li>
-                                </ul>
-                            </div>
+                            <form method="post">
+                                <div class="row">
+                                    <button class="btn btn-warning mx-auto" style="width: 100px;" name="backup" type="submit">Backup</button>
+                                </div>
+                            </form>
+                            <form action="../restore-database.php" method="post" enctype="multipart/form-data">
+                                <div class="row mt-3">
+                                    <input type="file" name="backup_file">
+                                    <button name="restore" class="blogdesire-button">
+                                        Restore
+                                    </button>
+                                </div>
+                            </form>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
     </div>
+
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">

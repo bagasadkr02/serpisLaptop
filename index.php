@@ -12,11 +12,9 @@ include 'conn.php'
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
-        type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="assets/css/styles.css" rel="stylesheet" />
 </head>
@@ -26,7 +24,24 @@ include 'conn.php'
     <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">Laptop D komputer</a>
-            <a class="btn btn-primary" href="login/index.php">Login admin</a>
+            <?php
+            session_start();
+            if (isset($_SESSION['status']) == "login") :
+            ?>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Admin
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="admin/logout.php">Logout</a>
+                        </li>
+                        <li><a class="dropdown-item" href="admin/index.php">Dashboard</a></li>
+                    </ul>
+                </div>
+
+            <?php else : ?>
+                <a class="btn btn-primary" href="login/index.php">Login admin</a>
+            <?php endif; ?>
         </div>
     </nav>
     <!-- Masthead-->
@@ -43,13 +58,7 @@ include 'conn.php'
                         <form action="data_tercari.php" method="post">
                             <div class="row">
                                 <div class="col">
-
-                                    <input class="form-control form-control-lg" id="keyword" name="keyword" type="text"
-                                        value="" placeholder="Masukan nomor resi" data-sb-validations="required" />
-
-                                    <input class="form-control form-control-lg" id="keyword" name="keyword" type="text"
-                                        value="" placeholder="Masukan nomor resi" data-sb-validations="required" />
-
+                                    <input class="form-control form-control-lg" id="keyword" name="keyword" type="text" value="" placeholder="Masukan nomor resi" data-sb-validations="required" />
                                 </div>
                                 <div class="col-auto">
                                     <button class="btn btn-primary btn-lg" type="submit">Cari</button>
@@ -97,8 +106,7 @@ include 'conn.php'
     <section class="showcase">
         <div class="container-fluid p-0">
             <div class="row g-0">
-                <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                    style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
+                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
                 <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                     <h2>Fully Responsive Design</h2>
                     <p class="lead mb-0">Aplikasi kami memiliki design yang responsive sehingga bisa di buka di
@@ -106,8 +114,7 @@ include 'conn.php'
                 </div>
             </div>
             <div class="row g-0">
-                <div class="col-lg-6 text-white showcase-img"
-                    style="background-image: url('assets/img/bg-showcase-1.jpg')"></div>
+                <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.jpg')"></div>
                 <div class="col-lg-6 my-auto showcase-text">
                     <h2>Updated Realtime</h2>
                     <p class="lead mb-0">Perkembangan service laptop anda akan di update secara realtime oleh tim kami,
@@ -115,8 +122,7 @@ include 'conn.php'
                 </div>
             </div>
             <div class="row g-0">
-                <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                    style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
+                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
                 <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                     <h2>Easy to Use</h2>
                     <p class="lead mb-0">Aplikasi kami di design untuk mudah di gunakan oleh semua pengguna jadi anda
