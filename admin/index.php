@@ -4,7 +4,13 @@
 session_start();
 if ($_SESSION['status'] != "login") {
     header("location: ../../login/index.php");
-} ?>
+}
+
+if (isset($_POST['backup'])) {
+    $data = backup_db($_POST['backup']);
+}
+
+?>
 
 <head>
     <meta charset="utf-8">
@@ -66,6 +72,17 @@ if ($_SESSION['status'] != "login") {
                                 <span data-feather="external-link" class="align-text-bottom"></span>
                                 logout
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Backup & Restore Database
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><button name="backup" class="dropdown-item">Backup</button></li>
+                                    <li><button name="restore" class="dropdown-item">Restore</button></li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
